@@ -12,10 +12,13 @@ module.exports = function (app) {
     let initUnit = convertHandler.getUnit(input);
     let retUnit = convertHandler.getReturnUnit(initUnit);
     let spellUnit = convertHandler.spellOutUnit(initUnit);
+    let convertedUnit = convertHandler.convert(getNum, initUnit)
     convertedHandle["input"] = input;
     convertedHandle["initUnit"] = initUnit;
     convertedHandle["returnUnit"] = retUnit;
     convertedHandle["spellUnit"] = spellUnit;
+    convertedHandle["convertUnit"] = convertedUnit
+
     res.json(convertedHandle);
-  });
+  }); 
 };

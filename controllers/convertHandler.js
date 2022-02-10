@@ -65,10 +65,22 @@ function ConvertHandler() {
   };
 
   this.convert = function (initNum, initUnit) {
+    let result;
+
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
-    let result;
+    switch(initUnit){
+      case "gal":
+        result = "this is the galons conversion"
+        break;
+      case "lbs":
+        result = "this is the pounds conversion"
+        break;
+      case "mi":
+        result = "this is the miles converion"
+
+    }
 
     return result;
   };
