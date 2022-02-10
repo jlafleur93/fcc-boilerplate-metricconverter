@@ -11,10 +11,11 @@ module.exports = function (app) {
     let getNum = convertHandler.getNum(input);
     let initUnit = convertHandler.getUnit(input);
     let retUnit = convertHandler.getReturnUnit(initUnit);
+    let spellUnit = convertHandler.spellOutUnit(initUnit);
     convertedHandle["input"] = input;
     convertedHandle["initUnit"] = initUnit;
     convertedHandle["returnUnit"] = retUnit;
-
+    convertedHandle["spellUnit"] = spellUnit;
     res.json(convertedHandle);
   });
 };

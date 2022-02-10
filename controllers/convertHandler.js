@@ -40,6 +40,26 @@ function ConvertHandler() {
 
   this.spellOutUnit = function (unit) {
     let result;
+    switch (unit) {
+      case "gal":
+        result = "galons";
+        break;
+      case "L":
+        result = "liters";
+        break;
+      case "mi":
+        result = "miles";
+        break;
+      case "km":
+        result = "kilometers";
+        break;
+      case "lbs":
+        result = "pounds";
+        break;
+      case "kg":
+        result = "kilograms";
+        break;
+    }
 
     return result;
   };
