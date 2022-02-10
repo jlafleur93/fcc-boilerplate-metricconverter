@@ -4,6 +4,7 @@ const regEx = /[a-z]+|[^a-z]+/gi;
 function ConvertHandler() {
   const units = ["gal", "L", "km", "mi", "lbs", "kg"];
   this.getNum = function (input) {
+    console.log(`getNum`,input)
     let result = "";
     if(input.length === 1){
       result = input.match(regEx)[0];
@@ -16,7 +17,11 @@ function ConvertHandler() {
 
   this.getUnit = function (input) {
     let result;
-    result = input.match(regEx)[1];
+    if(input.length === 0){
+      result = input.match(regEx)[1];
+      
+    }
+    result = input.match(regEx)[0]
     return result;
   };
 
@@ -72,28 +77,29 @@ function ConvertHandler() {
   };
 
   this.convert = function (initNum, initUnit) {
+    const number = Number(initNum)
     let result;
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     switch(initUnit){
       case "gal":
-        result = initNum * galToL
+        result = number * galToL
         break;
       case "lbs":
-        result = initNum * lbsToKg
+        result = number * lbsToKg
         break;
       case "mi":
-        result = initNum * miToKm
+        result = number * miToKm
         break;
       case "km": 
-      result = initNum / miToKm
+      result = number / miToKm
       break;
       case "kg":
-      result = initNum /lbsToKg; 
+      result = number /lbsToKg; 
       break;
       case "L": 
-      result = initNum / galToL
+      result = number / galToL
       break;
     }
 
