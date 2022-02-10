@@ -1,5 +1,6 @@
 const regEx = /[a-z]+|[^a-z]+/gi;
 function ConvertHandler() {
+  const units = ["gal", "L", "km", "mi", "lbs", "kg"];
   this.getNum = function (input) {
     let result = "";
     result = input.match(regEx)[0];
@@ -8,13 +9,32 @@ function ConvertHandler() {
 
   this.getUnit = function (input) {
     let result;
-    result = input;
+    result = input.match(regEx)[1];
     return result;
   };
 
   this.getReturnUnit = function (initUnit) {
     let result;
-
+    switch (initUnit) {
+      case "gal":
+        result = "L";
+        break;
+      case "L":
+        result = "gal";
+        break;
+      case "mi":
+        result = "km";
+        break;
+      case "km":
+        result = "mi";
+        break;
+      case "lbs":
+        result = "kg";
+        break;
+      case "kg":
+        result = "lbs";
+        break;
+    }
     return result;
   };
 

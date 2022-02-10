@@ -10,8 +10,11 @@ module.exports = function (app) {
     let input = req.query.input;
     let getNum = convertHandler.getNum(input);
     let initUnit = convertHandler.getUnit(input);
+    let retUnit = convertHandler.getReturnUnit(initUnit);
     convertedHandle["input"] = input;
     convertedHandle["initUnit"] = initUnit;
+    convertedHandle["returnUnit"] = retUnit;
+
     res.json(convertedHandle);
   });
 };
