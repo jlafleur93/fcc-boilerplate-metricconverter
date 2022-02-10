@@ -78,7 +78,16 @@ function ConvertHandler() {
         break;
       case "mi":
         result = initNum * miToKm
-
+        break;
+      case "km": 
+      result = initNum / miToKm
+      break;
+      case "kg":
+      result = initNum /lbsToKg; 
+      break;
+      case "L": 
+      result = initNum / galToL
+      break;
     }
 
     return result;
@@ -86,7 +95,7 @@ function ConvertHandler() {
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
     let result;
-    result = `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`
+    result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`
     return result;
   };
 }

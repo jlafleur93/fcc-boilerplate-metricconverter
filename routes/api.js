@@ -16,7 +16,8 @@ module.exports = function (app) {
     let getString = convertHandler.getString(getNum, initUnit, convertedUnit, retUnit)
     convertedHandle["input"] = input;
     convertedHandle["initUnit"] = initUnit;
-    convertedHandle["returnUnit"] = convertedUnit;
+    convertedHandle["returnUnit"] = retUnit;
+    convertedHandle["returnNum"] = convertedUnit;
     convertedHandle["spellUnit"] = spellUnit;
     convertedHandle["string"] = getString
 
