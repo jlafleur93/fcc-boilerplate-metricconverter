@@ -66,19 +66,18 @@ function ConvertHandler() {
 
   this.convert = function (initNum, initUnit) {
     let result;
-
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     switch(initUnit){
       case "gal":
-        result = "this is the galons conversion"
+        result = initNum * galToL
         break;
       case "lbs":
-        result = "this is the pounds conversion"
+        result = initNum * lbsToKg
         break;
       case "mi":
-        result = "this is the miles converion"
+        result = initNum * miToKm
 
     }
 
@@ -87,7 +86,7 @@ function ConvertHandler() {
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
     let result;
-
+    result = `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`
     return result;
   };
 }
