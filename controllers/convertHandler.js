@@ -111,5 +111,6 @@ function ConvertHandler() {
     return result;
   };
 }
-
+let convert = new ConvertHandler()
+console.log(convert.getReturnUnit("kg"));
 module.exports = ConvertHandler;
