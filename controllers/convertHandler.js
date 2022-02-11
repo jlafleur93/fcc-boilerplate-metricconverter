@@ -1,27 +1,24 @@
 const res = require("express/lib/response");
 
-const regEx = /[a-z]+|[^a-z]+/gi;
 function ConvertHandler() {
+  const regEx = /[a-z]+|[^a-z]+/gi;
   const units = ["gal", "L", "km", "mi", "lbs", "kg"];
   this.getNum = function (input) {
-    console.log(`getNum`,input)
     let result = "";
-    if(input.length === 1){
+    if(input.match(regEx)[0]){
       result = input.match(regEx)[0];
     }
     result = "1"
-    console.log(result)
-
     return result;
   };
 
   this.getUnit = function (input) {
     let result;
-    if(input.length === 0){
-      result = input.match(regEx)[1];
-      
+    for(let i = 0; i < units.length; i++){
+      if(input.includes(units[i])){
+        result = units[i]
+      }
     }
-    result = input.match(regEx)[0]
     return result;
   };
 
