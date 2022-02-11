@@ -11,16 +11,13 @@ module.exports = function (app) {
     let getNum = convertHandler.getNum(input);
     let initUnit = convertHandler.getUnit(input);
     let retUnit = convertHandler.getReturnUnit(initUnit);
-    console.log(`initUnit`,retUnit)
-
     let convertedUnit = convertHandler.convert(getNum, initUnit)
     let getString = convertHandler.getString(getNum, initUnit, convertedUnit, retUnit)
-    convertedHandle["input"] = input;
-    convertedHandle["initUnit"] = initUnit;
+    convertedHandle["input"] = getNum;
+    convertedHandle["initUnit"] = initUnit
     convertedHandle["returnUnit"] = retUnit;
     convertedHandle["returnNum"] = convertedUnit;
     convertedHandle["string"] = getString
-
     res.json(convertedHandle);
   }); 
 };

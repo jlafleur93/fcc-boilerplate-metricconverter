@@ -2,11 +2,16 @@ const res = require("express/lib/response");
 
 function ConvertHandler() {
   const regEx = /[a-z]+|[^a-z]+/gi;
-  const units = ["gal", "L", "km", "mi", "lbs", "kg"];
+  const units = ["gal", "l", "km", "mi", "lbs", "kg"];
+  const findNum =  /\d+/g;
   this.getNum = function (input) {
     let result = "";
-    if(input.match(regEx)[0]){
-      result = input.match(regEx)[0];
+    const fractionStrToDecimal = str => str.split('/').reduce((p, c) => p / c);
+    if(input.match(findNum)){
+      const numResult = fractionStrToDecimal(input.match(regEx)[0])
+      result = numResult
+      return result;
+
     }
     result = "1"
     return result;
@@ -14,21 +19,18 @@ function ConvertHandler() {
 
   this.getUnit = function (input) {
     let result;
-    for(let i = 0; i < units.length; i++){
-      if(input.includes(units[i])){
-        result = units[i]
-      }
-    }
-    return result;
+    const findUnit = input.match(regEx)[1]
+    result = findUnit
+    return result
   };
 
   this.getReturnUnit = function (initUnit) {
     let result;
     switch (initUnit) {
       case "gal":
-        result = "L";
+        result = "l";
         break;
-      case "L":
+      case "l":
         result = "gal";
         break;
       case "mi":
@@ -53,7 +55,7 @@ function ConvertHandler() {
       case "gal":
         result = "galons";
         break;
-      case "L":
+      case "l":
         result = "liters";
         break;
       case "mi":
@@ -81,22 +83,22 @@ function ConvertHandler() {
     const miToKm = 1.60934;
     switch(initUnit){
       case "gal":
-        result = number * galToL
+        result = (number * galToL).toFixed(5)
         break;
       case "lbs":
-        result = number * lbsToKg
+        result = (number * lbsToKg).toFixed(5)
         break;
       case "mi":
-        result = number * miToKm
+        result = (number * miToKm).toFixed(5)
         break;
       case "km": 
-      result = number / miToKm
+      result = (number / miToKm).toFixed(5)
       break;
       case "kg":
-      result = number /lbsToKg; 
+      result = (number /lbsToKg).toFixed(5); 
       break;
-      case "L": 
-      result = number / galToL
+      case "l": 
+      result = (number / galToL).toFixed(5)
       break;
     }
 
