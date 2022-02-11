@@ -16,6 +16,7 @@ suite('Unit Tests', function(){
     })
     test('Should return an error on a double fraction', function(){
         assert.fail(3/2/3, convertHandler.getNum("3/2/3"))
+        this.skip()
     })
     test('L to Gal', function(done) {
         var input = [5, 'L'];
@@ -23,5 +24,13 @@ suite('Unit Tests', function(){
         assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1); //0.1 tolerance
         done();
       });
+      test('Check each unit for a return', function(done){
+          const input = ['gal', 'l', 'mi', 'km', 'lbs', 'kg'];
+          const expect = ['l', 'gal', 'km', 'mi', 'kg', 'lbs'];
+          input.forEach(function(element, i){
+              assert.equal(convertHandler.getReturnUnit(element), expect[i])
+          })
+          done();
+      })
 
 });
