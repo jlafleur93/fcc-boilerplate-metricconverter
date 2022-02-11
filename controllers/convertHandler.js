@@ -76,29 +76,29 @@ function ConvertHandler() {
   };
 
   this.convert = function (initNum, initUnit) {
-    const number = Number(initNum)
+    const strConv = initUnit.toLowerCase()
     let result;
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
-    switch(initUnit){
+    switch(strConv){
       case "gal":
-        result = (number * galToL).toFixed(5)
+        result = parseFloat((initNum * galToL).toFixed(5))
         break;
       case "lbs":
-        result = (number * lbsToKg).toFixed(5)
+        result = parseFloat((initNum * lbsToKg).toFixed(5))
         break;
       case "mi":
-        result = (number * miToKm).toFixed(5)
+        result = parseFloat((initNum * miToKm).toFixed(5))
         break;
       case "km": 
-      result = (number / miToKm).toFixed(5)
+      result = parseFloat((initNum / miToKm).toFixed(5))
       break;
       case "kg":
-      result = (number /lbsToKg).toFixed(5); 
+      result = parseFloat((initNum /lbsToKg).toFixed(5)); 
       break;
       case "l": 
-      result = (number / galToL).toFixed(5)
+      result = parseFloat((initNum / galToL).toFixed(5))
       break;
     }
 

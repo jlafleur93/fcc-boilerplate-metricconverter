@@ -17,5 +17,11 @@ suite('Unit Tests', function(){
     test('Should return an error on a double fraction', function(){
         assert.fail(3/2/3, convertHandler.getNum("3/2/3"))
     })
+    test('L to Gal', function(done) {
+        var input = [5, 'L'];
+        var expected = 1.32086;
+        assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1); //0.1 tolerance
+        done();
+      });
 
 });
