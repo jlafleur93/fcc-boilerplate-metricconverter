@@ -5,10 +5,12 @@ function ConvertHandler() {
   const units = ["gal", "l", "km", "mi", "lbs", "kg"];
   const findNum =  /\d+/g;
   this.getNum = function (input) {
-    let result = "";
+    let result
     const fractionStrToDecimal = str => str.split('/').reduce((p, c) => p / c);
     if(input.match(findNum)){
       const numResult = fractionStrToDecimal(input.match(regEx)[0])
+      console.log(numResult,numResult.length)
+
       result = numResult
       return result;
 
@@ -20,6 +22,9 @@ function ConvertHandler() {
   this.getUnit = function (input) {
     let result;
     const findUnit = input.match(regEx)[1]
+    if(!units.includes(findUnit)){
+      return 'invalid unit'
+    }
     result = findUnit
     return result
   };

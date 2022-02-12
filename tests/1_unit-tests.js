@@ -32,5 +32,11 @@ suite('Unit Tests', function(){
           })
           done();
       })
+      test('Invalid unit gives back a string', function(){
+          let input = 'horse'
+          let expect = 'invalid unit'
+          assert.equal(convertHandler.getUnit(32 + input), expect)
+
+      })
 
 });
