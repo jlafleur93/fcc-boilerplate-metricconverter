@@ -17,12 +17,7 @@ module.exports = function (app) {
       convertedUnit,
       retUnit,
     );
-    let convertedHandle = {};
-    convertedHandle["initNum"] = initNum;
-    convertedHandle["initUnit"] = initUnit;
-    convertedHandle["returnUnit"] = retUnit;
-    convertedHandle["returnNum"] = convertedUnit;
-    convertedHandle["string"] = getString;
+
     if (initNum === "invalid number" && initUnit === "invalid unit") {
       res.json("invalid number and unit");
     } else if (initNum === "invalid number" && initUnit !== "invalid unit") {
@@ -30,7 +25,12 @@ module.exports = function (app) {
     } else if (initUnit === "invalid unit" && initNum !== "invalid number") {
       res.json("invalid unit");
     }
-
+    let convertedHandle = {};
+    convertedHandle["initNum"] = initNum;
+    convertedHandle["initUnit"] = initUnit;
+    convertedHandle["returnUnit"] = retUnit;
+    convertedHandle["returnNum"] = convertedUnit;
+    convertedHandle["string"] = getString;
     res.json(convertedHandle);
   });
 };

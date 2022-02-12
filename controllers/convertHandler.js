@@ -9,6 +9,7 @@ function ConvertHandler() {
     let result;
 
     result = input.match(regEx)[0];
+
     if (findNum.test(result) === false) {
       result = 1;
     }
@@ -36,79 +37,65 @@ function ConvertHandler() {
     if (!result) {
       result = input.match(regEx)[0];
     }
-    let units = [
-      "gal",
-      "l",
-      "mi",
-      "km",
-      "lbs",
-      "kg",
-      "GAL",
-      "L",
-      "MI",
-      "KM",
-      "LBS",
-      "KG",
-    ];
-    if (!units.includes(result)) {
-      return "invalid unit";
+    switch (result) {
+      case "KM":
+      case "km":
+        return "km";
+      case "MI":
+      case "mi":
+        return "mi";
+      case "LBs":
+      case "lbs":
+        return "lbs";
+      case "KG":
+      case "kg":
+        return "kg";
+      case "L":
+      case "l":
+        return "L";
+      case "GAL":
+      case "gal":
+        return "gal";
+      default:
+        return "invalid unit";
     }
-
-    return result;
   };
 
   this.getReturnUnit = function (initUnit) {
-    let result;
-    switch (initUnit) {
-      case "GAL":
+    switch (initUnit.toLowerCase()) {
       case "gal":
-        result = "l";
-        break;
-      case "L":
+        return "L";
       case "l":
-        result = "gal";
-        break;
-      case "MI":
+        return "gal";
       case "mi":
-        result = "km";
-        break;
-      case "KM":
+        return "km";
       case "km":
-        result = "mi";
-        break;
-      case "LBs":
+        return "mi";
       case "lbs":
-        result = "kg";
-        break;
-      case "KG":
+        return "kg";
       case "kg":
-        result = "lbs";
-        break;
+        return "lbs";
+      default:
+        return undefined;
     }
-    return result;
   };
 
   this.spellOutUnit = function (unit) {
     let result;
+    console.log(`spellOutUnit here--`, unit);
     switch (unit) {
       case "gal":
-        result = "gallon(s)";
-        break;
+        return "gallons";
       case "l":
-        result = "litre(s)";
-        break;
+        return "liters";
       case "mi":
-        result = "mile(s)";
-        break;
+        return "miles";
       case "km":
-        result = "kilometre(s)";
-        break;
+        return "kilometers";
       case "lbs":
-        result = "pound(s)";
-        break;
+        return "pounds";
       case "kg":
-        result = "kilogram(s)";
-        break;
+        return "kilograms";
     }
 
     return result;
@@ -145,6 +132,7 @@ function ConvertHandler() {
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
+    console.log("init num", initNum);
     let result;
     result = `${initNum} ${this.spellOutUnit(
       initUnit,
